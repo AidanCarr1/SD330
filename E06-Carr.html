@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>JS Fridge</title>
+        <meta charset="UTF-8">
+
+        <style>
+            body{
+                background-color: aliceblue;
+                font-size: 20px;
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            }
+            h1{
+                padding: 15px;
+                margin: 15px;
+                font-size: 40px;
+            }
+            #fridge{
+                float:left;
+                width: 700px; 
+                height: 775px;
+                padding: 15px;
+                margin: 15px;
+                background-color: aqua;
+            }
+            #display{
+                float:left;
+                width: 400px; 
+                height: 775px;
+                padding: 15px;
+                margin: 15px;
+                background-color: lightgreen;
+            }
+            input{
+                font-size: 20px;
+            }
+            #screen{
+                background-color: lightgrey;
+                height: 500px; 
+                padding: 15px;
+                margin: 15px;
+            }
+            #clock{
+                background-color: lightgrey;
+                padding: 5px;
+                width: 175px;
+                text-align:center;
+            }
+            .center {
+                position: relative;
+                left: 50%;
+                -ms-transform: translate(-50%, 0);
+                transform: translate(-50%, 0);
+            }
+        </style>
+    </head>
+
+
+    <body onload="doStartClock();">
+
+        <div id="myHeading">
+            <h1>JavaScript Fridge</h1>
+        </div>
+        
+
+        <div id="fridge">
+            <p><input input class="center" type=button onclick="showContents()" id="butContents" value="Open Door"></p>
+            <img id="contents" width="100%" alt="Fridge Contents" src="https://media.istockphoto.com/id/1151763972/vector/fridge-doors-and-empty-paper-note.jpg?s=612x612&w=0&k=20&c=X8U6LBS8P13WUWWnOuA6EVS_V1V0OG7KSMVwtKnxZFU="> 
+        </div>
+        
+        
+        <div id="display" style="font-family: 'Orbitron',sans-serif;">
+            <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
+
+            <div id="clock" class="center">
+                <p ><strong id="time">00 : 00 : 00 am</strong></p>
+            </div>
+
+            <div id="buttons">
+                <p><input class="center" type=button onclick="showTemp()" id="butTemp" value="Show Temperature"></p>
+                <p><input class="center" type=button onclick="showTV()" id="butTV" value="Open Netflix"></p>
+                <p><input class="center" type=button onclick="showBrowser()" id="butBrowser" value="Open Google"></p>
+            </div>
+
+            <div id="screen">
+                <p style="text-align: center;"><strong id="temp" ></strong></p>
+                <p><img id="tv" width="100%" alt="Netflix Interface" style="visibility: hidden;" src = "https://i.pcmag.com/imagery/articles/06DXdZyIU3yVY6UcFq3geED-3..v1647536961.png"></p> 
+                <p><img id="browser" width="100%" alt="Google Interface" style="visibility: hidden;" src = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_Homepage.svg/640px-Google_Homepage.svg.png"></p>
+            </div>
+        </div>
+
+
+        <br style="clear:left;">
+
+    </body>
+
+
+    <footer>
+        <hr>
+        <small> &copy; Aidan Carr, March 6, 2023  </small>
+    </footer>
+
+
+    <script>
+
+        function doStartClock(){
+            setInterval(doClockTick,1000);
+        }
+
+        function doClockTick(){
+            var currentDate = new Date();
+            var hours = (currentDate.getHours() +11) % 12 + 1;
+            var mins = currentDate.getMinutes();
+            var secs = currentDate.getSeconds();
+            if(currentDate.getHours()<12){
+                sun = "am"
+            } else{sun = "pm"}
+            var timeString = hours+" : ";
+            if(mins<10){
+                timeString+= "0"+mins+" : ";
+            }else{timeString+= mins+" : ";}
+            if(secs<10){
+                timeString+= "0"+secs+" "+sun;
+            }else{timeString+= secs+" "+sun;}
+
+            var outputElement = document.getElementById("time");
+            outputElement.textContent = timeString;
+        }
+
+        function showTemp(){
+            but = document.getElementById("butTemp")
+            temp = document.getElementById("temp")
+            if (but.value == "Show Temperature"){
+                but.value = "Hide Temperature";
+                temp.textContent = "32\u00B0";
+            }else{
+                but.value = "Show Temperature";
+                temp.textContent = " ";
+            }
+        }
+
+        function showContents(){
+            but = document.getElementById("butContents")
+            img = document.getElementById("contents")
+            if (but.value == "Open Door"){
+                but.value = "Close Door";
+                img.src = "https://images.food52.com/rJYw-ovQ424oCWWDlSFItB5KA1U=/1200x1200/dd6b1621-4b08-4b52-88f9-a0b60e89816d--2020-1013_sponsored_LG_fridge_article-hero_3x2_rocky-luten_012.jpg"
+            }else{
+                but.value = "Open Door";
+                img.src = "https://media.istockphoto.com/id/1151763972/vector/fridge-doors-and-empty-paper-note.jpg?s=612x612&w=0&k=20&c=X8U6LBS8P13WUWWnOuA6EVS_V1V0OG7KSMVwtKnxZFU=";
+            }
+        }
+
+        function showTV(){
+            but = document.getElementById("butTV")
+            img = document.getElementById("tv")
+            if (but.value == "Open Netflix"){
+                but.value = "Close Netflix";
+                img.style.visibility = 'visible';
+            }else{
+                but.value = "Open Netflix";
+                img.style.visibility = 'hidden'
+            }
+        }
+
+        function showBrowser(){
+            but = document.getElementById("butBrowser")
+            img = document.getElementById("browser")
+            if (but.value == "Open Google"){
+                but.value = "Close Google";
+                img.style.visibility = 'visible';
+            }else{
+                but.value = "Open Google";
+                img.style.visibility = 'hidden'
+            }
+        }
+    
+    </script>
+</html>

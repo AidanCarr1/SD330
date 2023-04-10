@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>JS Fridge v2</title>
+        <meta charset="UTF-8">
+
+        <style>
+            body{
+                background-color: white;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+			
+			#display{
+				width: 1000px;
+				height: 500px;
+				background-color: rgb(30, 30, 30);
+			}
+			
+			#controlPanel{
+				width: 250px;
+				height: 500px;
+				background-color: lightgray;
+				float: left;
+			}
+			
+			#logo{
+				width: 150px;
+				height: 150px;
+				margin-left: 50px;
+				margin-top: 27px;
+			}
+			
+			#clock{
+				width: 200px;
+				height: 100px;
+				margin-left: 25px;
+			}
+
+            #time{
+                background-color: whitesmoke;
+                text-align: center;
+                font-size: 33px;
+                color: green;
+                border-radius: 15px;
+                border-color: black;
+                margin-bottom: 15px;
+                margin-top: 44px
+            }
+
+            #butClock{
+                margin-left: 67px;
+                text-align: center;
+                font-size: 15px;
+                border-radius: 5px;
+            }
+			
+			#power{
+				width: 125px;
+				height: 125px;
+				margin-left: 62px;
+				margin-top: 25px;
+			}
+            
+            .screen{
+                float: right;
+				width: 750px;
+				height: 500px;
+            }
+
+            #homeScreen{
+				background-color: green;
+			}
+
+            #leftFunctions{
+				float: left;
+				background-color: rgb(80, 100, 100);
+				width: 350px;
+				height: 500px;
+			}
+
+            #temperature{
+                float: left;
+                border-radius: 15px;
+                background-color: white;
+				width: 300px;
+				height: 175px;
+                margin-left: 25px;
+                margin-top: 25px;
+            }
+            
+            #tempThermometer{
+                float: left;
+				width: 75px;
+				height: 155px;
+                margin-left: 12px;
+                margin-top: 10px;
+            }
+
+            #tempPlus{
+                float: left;
+				width: 50px;
+				height: 40px;
+                margin-left: 50px;
+                margin-top: 7px;
+                border: 2px solid darkgray;
+                background-color: darkgray;
+                border-radius: 7px;
+            }
+            
+            #tempDisplay{
+                float: left;
+                background-color: lightgray;
+                border-radius: 15px;
+				width: 110px;
+				height: 55px;
+                margin-left: 20px;
+                margin-top: 10px;
+                font-size: 40px;
+                text-align: center;
+            }
+
+            #tempUnit{
+                float: left;
+				width: 50px;
+				height: 40px;
+                margin-left: 16px;
+                margin-top: 15px;
+                border: 2px solid darkgray;
+                background-color: darkgray;
+                border-radius: 7px;
+            }
+
+            #tempMinus{
+                float: left;
+				width: 50px;
+				height: 40px;
+                margin-left: 50px;
+                margin-top: 9px;
+                border: 2px solid darkgray;
+                background-color: darkgray;
+                border-radius: 7px;
+            }
+
+            #shoppingList{
+                float: left;
+                border-radius: 15px;
+                background-color: white;
+				width: 300px;
+				height: 250px;
+                margin-left: 25px;
+                margin-top: 25px;
+            }
+
+            #shoppingTitle{
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
+
+            #itemList{
+                background-color: lightgray;
+                margin-left: 25px;
+                width: 230px;
+				height: 130px;
+                overflow: auto;
+                font-size: 17px;
+                border-radius: 5px;
+                padding: 10px;
+            }
+        
+            #itemSubmit{
+                margin-left: 25px;
+                width: 250px;
+                margin-top: 15px;
+                
+            }
+
+            #item{
+                font-size: 17px;
+                width: 175px;
+                border: 2px solid darkgray;
+                border-radius: 7px;
+            }
+
+            #butAddItem{
+                font-size: 17px;
+                width: 60px;
+                border: 2px solid darkgray;
+                border-radius: 7px;
+            }
+
+            #apps{
+                float:right;
+                background-color: rgb(80, 100, 100);
+				width: 400px;
+				height: 500px;
+            }
+
+            .app{
+                float:left;
+                width: 125px;
+				height: 133px;
+                margin-left: 50px;
+                margin-top: 25px;
+            }
+
+            .appTitle{
+                margin-top: 0px;
+                text-align: center;
+                font-size: 20px;
+            }
+            
+            .butGoHome{
+                width: 75px;
+                height: 75px;
+                margin-left: 20px;
+                margin-top: 20px;
+                float:left;
+                border: 2px solid darkgray;
+                background-color: darkgray;
+                border-radius: 38px;
+            }
+
+            .appHeader{
+                border-radius: 15px;
+                background-color: white;
+                margin-left: 120px;
+                margin-top: 35px;
+                width: 600px;
+                height: 50px;
+                text-align: center;
+                font-size: 35px;
+            }
+
+            h3{
+                margin-top:10px
+            }
+
+            .appBody{
+                width: 700px;
+                height: 350px;
+                margin-top: 40px;
+                margin-left: 25px;
+                border-radius: 15px;               
+            }
+
+            #app1Screen{
+				background-color: gray;
+			}
+
+            #app2Screen{
+				background-color: lightgreen;
+			}
+
+            #app3Screen{
+				background-color: yellowgreen;
+			}
+
+            #app4Screen{
+				background-color: salmon;
+			}
+
+            #app5Screen{
+				background-color: lightblue;
+			}
+
+            #app6Screen{
+				background-color: tan;
+			}
+
+            .songsTable{
+                padding: 7px;
+                text-align:center;
+                font-size: 20px;
+            }
+            
+            th{
+                padding: 7px;
+                text-align:center;
+                font-size: 25px;
+            }
+
+            #weatherMain{
+                float:left;
+                width: 275px;
+                height: 150px;
+                margin-left: 50px;
+                margin-top: 25px;
+                background-color:white;
+                border-radius: 15px;
+            }
+            #weather{
+                float:left;        
+                line-height: 0px;
+                width: 125px;
+                height: 150px;
+                font-size: 75px;
+                text-align: center;
+            }
+            
+            #sun{
+                float:left;
+                width: 150px;
+                height: 150px;
+            }
+
+            #sevenDay{
+                float:right;
+                width: 275px;
+                margin-right: 25px;
+                margin-top: 25px;
+                background-color: white;
+                border-radius: 15px;
+                font-size: 20px;
+                padding: 10px;
+                line-height: 30px;
+            }
+
+            #weatherDetail{
+                width: 275px;
+                height: 125px;
+                background-color:white;
+                border-radius: 15px;
+                margin-left: 50px;
+                margin-top: 25px;
+                float:left;
+            }
+
+            .weatherDetail{
+                margin-top:8px;
+                float:left;
+                width: 125px;
+                height: 50px;
+                text-align:center;
+                font-size: 18px;
+                line-height: 10px;;
+            }
+
+            #timerPanel{
+                float:left;
+                background-color: white;
+                border-radius: 15px;
+                width: 550px;
+                height: 150px;
+                margin-left: 75px;
+                margin-top: 25px;
+            }
+
+            #timerX{
+                float:left;
+                width: 75px;
+                height: 75px;
+                margin-left: 20px;
+                margin-top: 37px;
+                border: 2px solid darkgray;
+                background-color: darkgray;
+                border-radius: 38px;
+            }
+
+            #timerDisplay{
+                float:left;
+                background-color: white;
+                border-radius: 15px;
+                width: 320px;
+                height: 125px;
+                margin-left: 20px;
+                margin-top: 12.5px;
+            }
+
+            #timerText{
+                text-align: center;
+                font-size: 75px;
+                margin-top: 25px;
+            }
+
+            #timerCheck{
+                float:left;
+                width: 75px;
+                height: 75px;
+                margin-left: 20px;
+                margin-top: 37.5px;
+                border: 2px solid darkgray;
+                background-color: darkgray;
+                border-radius: 38px;
+            }
+
+            #timerPause{
+                float:left;
+                width: 75px;
+                height: 75px;
+                margin-left: 20px;
+                margin-top: 37.5px;
+                border: 2px solid darkgray;
+                background-color: darkgray;
+                border-radius: 38px;
+            }
+
+            #timerMinutes{
+                float:left;
+                background-color: white;
+                border-radius: 15px;
+                width: 410px;
+                height: 125px;
+                margin-left: 145px;
+                margin-top: 25px;
+            }
+
+            #timerMinus{
+                float:left;
+                width: 65px;
+                height: 65px;
+                margin-left: 20px;
+                margin-top: 30px;
+                border: 2px solid darkgray;
+                background-color: darkgray;
+                border-radius: 32px;
+            }
+
+            #timerMinText{
+                float:left;
+                width: 200px;
+                height: 65px;
+                margin-left: 20px;
+                margin-top: 30px;
+                font-size: 25px;
+                text-align: center;
+                line-height: 45px;
+            }
+
+            #timerPlus{
+                float:left;
+                width: 65px;
+                height: 65px;
+                margin-left: 20px;
+                margin-top: 30px;
+                border: 2px solid darkgray;
+                background-color: darkgray;
+                border-radius: 32px;
+            }
+
+        </style>
+    </head>
+
+
+    <body onload="doStartUp();">
+        
+        <div id="myHeading">
+            <h1>JavaScript Fridge - Version 2</h1>
+        </div>
+        
+        <div id="display">
+            
+			<div id="controlPanel">
+			
+				<div id="logo">
+                    <p><img src="https://aidancarr1.github.io/SD330/fridge%20logo%20off.png" width="100%" id="logoPic" value="off"></p>
+				</div>
+				
+				<div id="clock" style="font-family: 'alarm clock',sans-serif;">
+                <link href='https://fonts.cdnfonts.com/css/alarm-clock' rel='stylesheet' type='text/css'>
+                    <p id="time">00:00:00 AM</p>
+                    <input type="button" onclick="changeHour()" id="butClock" value='12h/24h'>
+				</div>
+
+                <div id="power">
+                    <p><img src="https://aidancarr1.github.io/SD330/power.png" onclick="powerSwitch();" width="100%" id="butPower" value="off"></p>
+				</div>
+				
+			</div>
+
+            <div id="homeScreen" style="display:none" class="screen">
+            
+                <div id="leftFunctions">
+                    
+                    <div id="temperature">
+                        
+                        <div id="tempThermometer">
+                            <img src="https://aidancarr1.github.io/SD330/thermometer.png" width="100%" id="thermometerIcon">
+                        </div>
+                        
+                        <div id="tempPlus">
+                            <img src="https://aidancarr1.github.io/SD330/upArrow.png" onclick="tempUp();" width="100%" id="butTempUp">
+                        </div>
+
+                        <div id="tempDisplay"  style="font-family: 'alarm clock',sans-serif;">
+                            <link href='https://fonts.cdnfonts.com/css/alarm-clock' rel='stylesheet' type='text/css'>
+                            <p id="temp" style="margin-top: 10px">0 &deg;</p>
+                        </div>
+
+                        <div id="tempUnit">
+                            <img src="https://aidancarr1.github.io/SD330/fc.png" onclick="changeUnit();" width="100%" id="butUnit">
+                        </div>
+
+                        <div id="tempMinus">
+                            <img src="https://aidancarr1.github.io/SD330/downArrow.png" onclick="tempDown();" width="100%" id="butTempDown">
+                        </div>
+
+                    </div>
+                    <!-- <br style="clear:left;"> -->
+    
+                    <div id="shoppingList">
+                        <h2 id="shoppingTitle" class="appTitle">Shopping List</h2>
+                        <div id="itemList">
+                            <table id="shoppingTable">
+                                <tr><td>White bread</td></tr>
+                                <tr><td>Chicken</td></tr>
+                                <tr><td>Mayo</td></tr>
+                                <tr><td>Lunch ham</td></tr>
+                                <tr><td>Lima beans</td></tr>
+                            </table>
+                        </div>
+                        <div id="itemSubmit">
+                            <tr><td><input type="text" id="item"></td></tr>
+                            <tr><td><button id="butAddItem" onclick="addItem();"> Add </button></td></tr>    
+                        </div>
+                        
+                    </div>
+
+                </div>                
+                
+                <div id="apps">
+                
+                    <div id="app1" class="app">
+                        <img src="https://aidancarr1.github.io/SD330/internetApp.png" onclick="openApp(1);" width="90%" id="butApp1" value="off" style="margin-left: 5%;">
+                        <h2 class="appTitle">Internet</h2>
+                    </div>
+                    
+                    <div id="app2" class="app">
+                        <img src="https://aidancarr1.github.io/SD330/spotifyApp.png" onclick="openApp(2);" width="90%" id="butApp2" value="off" style="margin-left: 5%;">
+                        <h2 class="appTitle">Spotify</h2>
+                    </div>
+                    
+                    <div id="app3" class="app">
+                        <img src="https://aidancarr1.github.io/SD330/insideApp.png" onclick="openApp(3);" width="90%" id="butApp3" value="off" style="margin-left: 5%;">
+                        <h2 class="appTitle">View Inside</h2>
+                    </div>
+                    
+                    <div id="app4" class="app">
+                        <img src="https://aidancarr1.github.io/SD330/tvApp.png" onclick="openApp(4);" width="90%" id="butApp4" value="off" style="margin-left: 5%;">
+                        <h2 class="appTitle">TV</h2>
+                    </div>
+                    
+                    <div id="app5" class="app">
+                        <img src="https://aidancarr1.github.io/SD330/weatherApp.png" onclick="openApp(5);" width="90%" id="butApp5" value="off" style="margin-left: 5%;">
+                        <h2 class="appTitle">Weather</h2>
+                    </div>
+                    
+                    <div id="app6" class="app">
+                        <img src="https://aidancarr1.github.io/SD330/timerApp.png" onclick="openApp(6);" width="90%" id="butApp6" value="off" style="margin-left: 5%;">
+                        <h2 class="appTitle">Timer</h2>
+                    </div>
+                
+                </div>
+                
+            </div>
+
+            <div id="app1Screen" style="display:none" class="screen">
+                <div id="app1HomeBut" class="butGoHome">
+                    <img src="https://aidancarr1.github.io/SD330/homeIcon.png" onclick="goHome(1);" width="100%" id="butHome1">
+                </div>
+                <div id="app1Header" class="appHeader">
+                    <h3>Internet</h3>
+                </div>
+                
+                <div id="app1Body" class="appBody">
+                    <iframe width="100%" height="100%" src="https://www.google.com"></iframe>
+                </div>
+
+            </div>
+
+            <div id="app2Screen" style="display:none" class="screen">
+                <div id="app2HomeBut" class="butGoHome">
+                    <img src="https://aidancarr1.github.io/SD330/homeIcon.png" onclick="goHome(2);" width="100%" id="butHome2">
+                </div>
+                <div id="app2Header" class="appHeader">
+                    <h3>Spotify</h3>
+                </div>
+                
+                <div id="app2Body" class="appBody" style="background-color: white;">
+                    <table id="songsTable">
+                        <tr class="songsTable">
+                            <th>Song</th>
+                            <th>Author</th>
+                            <th>Listen</th>
+                        </tr>
+                        <tr class="songsTable">
+                            <td class="songsTable">Funky Song!</td>
+                            <td class="songsTable">Marvin McCool</td>
+                            <td class="songsTable">
+                                <audio controls>
+                                    <source src="https://samplelib.com/lib/preview/mp3/sample-15s.mp3">
+                                </audio>
+                            </td>
+                        </tr>
+                        <tr class="songsTable">
+                            <td class="songsTable">The Worst Song Ever</td>
+                            <td class="songsTable">Jess Boring</td>
+                            <td class="songsTable">
+                                <audio controls>
+                                    <source src="https://samplelib.com/lib/preview/mp3/sample-9s.mp3">
+                                </audio>
+                            </td>
+                        </tr>
+                        <tr class="songsTable">
+                            <td class="songsTable">In The Forest 2</td>
+                            <td class="songsTable">Nightly Deranged</td>
+                            <td class="songsTable">
+                                <audio controls>
+                                    <source src="https://cdn.pixabay.com/download/audio/2022/02/22/audio_c06fba1b22.mp3?filename=in-the-forest-2-21402.mp3">
+                                </audio>
+                            </td>
+                        </tr>
+                        <tr class="songsTable">
+                            <td class="songsTable">Good Morning</td>
+                            <td class="songsTable">Lil Markky</td>
+                            <td class="songsTable">
+                                <audio controls>
+                                    <source src="https://cdn.pixabay.com/download/audio/2023/03/14/audio_eacedf220f.mp3?filename=good-morning-142550.mp3">
+                                </audio>
+                            </td>
+                        </tr>
+                        
+                    </table>
+                       
+                </div>
+                
+            </div>
+
+            <div id="app3Screen" style="display:none" class="screen">
+                <div id="app3HomeBut" class="butGoHome">
+                    <img src="https://aidancarr1.github.io/SD330/homeIcon.png" onclick="goHome(3);" width="100%" id="butHome3">
+                </div>
+                <div id="app3Header" class="appHeader">
+                    <h3>View Inside</h3>
+                </div>
+
+                <div id="app3Body" class="appBody">
+                    <img src="https://aidancarr1.github.io/SD330/inside%20image.jpg" height="100%" style="margin-left:86px">
+                </div>
+                
+            </div>
+
+            <div id="app4Screen" style="display:none" class="screen">
+                <div id="app4HomeBut" class="butGoHome">
+                    <img src="https://aidancarr1.github.io/SD330/homeIcon.png" onclick="goHome(4);" width="100%" id="butHome4">
+                </div>
+                <div id="app4Header" class="appHeader">
+                    <h3>TV</h3>
+                </div>
+                
+                <div id="app4Body" class="appBody">
+                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/QQDMvn8jN7k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+                
+            </div>
+
+            <div id="app5Screen" style="display:none" class="screen">
+                <div id="app5HomeBut" class="butGoHome">
+                    <img src="https://aidancarr1.github.io/SD330/homeIcon.png" onclick="goHome(5);" width="100%" id="butHome5">
+                </div>
+                <div id="app5Header" class="appHeader">
+                    <h3>Weather</h3>
+                </div>
+                
+                <div id="app5Body" class="appBody">
+                    <div id="weatherMain">
+                        <div id="weather">
+                            <p>43&deg;</p>
+                        </div>
+                        <div id="sun">
+                            <img src="https://aidancarr1.github.io/SD330/sunny.png" width="100%">
+                        </div>
+                    </div>
+                    
+                    <div id="sevenDay">
+                        <h2 class="appTitle">Seven Day Forecast</h2>
+                        <table>
+                            <tr><td width="175px">Monday</td><td width="50px">34</td><td width="30px">76</td></tr>
+                            <tr><td>Tuesday</td><td>43</td><td>69</td></tr>
+                            <tr><td>Wednesday</td><td>40</td><td>70</td></tr>
+                            <tr><td>Thursday</td><td>38</td><td>79</td></tr>
+                            <tr><td>Friday</td><td>44</td><td>76</td></tr>
+                            <tr><td>Saturday</td><td>43</td><td>73</td></tr>
+                            <tr><td>Sunday</td><td>47</td><td>81</td></tr>
+                        </table>
+                    </div>
+
+                    <div id="weatherDetail">
+                        <div id="wind" class="weatherDetail">
+                            <p>&#8767; 5 mph</p>
+                        </div>
+                        <div id="UV" class="weatherDetail">
+                            <p>&#9728; UV index 4</p>
+                        </div>
+                        <div id="precip" class="weatherDetail">
+                            <p>&#127783; 0% rain</p>
+                        </div>
+                        <div id="humid" class="weatherDetail">
+                            <p>&#127778; 5% humidity</p>
+                        </div>
+
+                    </div>
+                    
+                </div>
+                
+            </div>
+
+            <div id="app6Screen" style="display:none" class="screen">
+                <div id="app6HomeBut" class="butGoHome">
+                    <img src="https://aidancarr1.github.io/SD330/homeIcon.png" onclick="goHome(6);" width="100%" id="butHome6">
+                </div>
+                <div id="app6Header" class="appHeader">
+                    <h3>Timer</h3>
+                </div>
+
+                <div id="app6Body" class="appBody">
+                    <div id="timerPanel">
+                        <div id="timerX">
+                            <img src="https://aidancarr1.github.io/SD330/timerX.png" onclick="cancelTimer();" width="100%" id="butMinCancel">
+                        </div>
+                        <div id="timerDisplay" style="font-family: 'alarm clock',sans-serif;">
+                            <link href='https://fonts.cdnfonts.com/css/alarm-clock' rel='stylesheet' type='text/css'>
+                            <p id="timerText">0:00</p>
+                        </div>
+                        <div id="timerCheck">
+                            <img src="https://aidancarr1.github.io/SD330/timerCheck.png" onclick="startTimer();" width="100%" id="butMinStart">
+                        </div>
+                        <div id="timerPause" style="display:none;">
+                            <img src="https://aidancarr1.github.io/SD330/timerPause.png" onclick="pauseTimer();" width="100%" id="butMinPause">
+                        </div>
+                    </div>
+                    <div id="timerMinutes">
+                        <div id="timerMinus">
+                            <img src="https://aidancarr1.github.io/SD330/timerDown.png" onclick="subMinute();" width="100%" id="butMinMin">
+                        </div>
+                        <div id="timerMinText">
+                            <h3>Minutes</h3>
+                        </div>
+                        <div id="timerPlus">
+                            <img src="https://aidancarr1.github.io/SD330/timerUp.png" onclick="addMinute();" width="100%" id="butMinAdd">
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+			
+        </div>
+
+    </body>
+
+
+    <footer>
+        <hr>
+        <small> &copy; Aidan Carr, April 9, 2023  </small>
+    </footer>
+
+
+    <script>
+
+    // Global variables
+        var hourType = '12h';
+
+        var tempF = Math.floor(Math.random()*9) + 32;
+        var tempC = Math.floor(tempFtoC(tempF));
+        var unit = "F";
+
+        var list = ["White bread", "Chicken", "Mayo", "Lunch ham", "Lima beans"];
+        var textList = "";
+
+        var timerSec = 0;
+        var timerMin = 0;
+
+    //On load function
+        function doStartUp(){
+            setInterval(doClockTick,1000);
+            document.getElementById("temp").textContent = tempF + "\xB0F";
+            setList();
+        }
+    
+    //Clock functions
+        function changeHour(){
+            if(hourType == '24h'){
+                hourType = '12h';
+            }
+            else{
+                hourType = '24h';
+            }
+        }
+
+        function doClockTick(){
+            var currentDate = new Date();
+            var mins = currentDate.getMinutes();
+            var secs = currentDate.getSeconds();
+
+            if(hourType == '12h'){
+                var hours = (currentDate.getHours() +11) % 12 + 1;
+                if(currentDate.getHours()<12){
+                    sun = " AM"
+                }else{sun = " PM"}
+                var timeString = hours+":";
+                if(mins<10){
+                    timeString+= "0"+mins+":";
+                }else{timeString+= mins+":";}
+                if(secs<10){
+                    timeString+= "0"+secs+" "+sun;
+                }else{timeString+= secs+sun;}
+            }
+
+            else{
+                var hours = currentDate.getHours();
+                var timeString = hours+":";
+                if(mins<10){
+                    timeString+= "0"+mins+":";
+                }else{timeString+= mins+":";}
+                if(secs<10){
+                    timeString+= "0"+secs;
+                }else{timeString+= secs;}   
+            }
+            var outputElement = document.getElementById("time");
+            outputElement.textContent = timeString;
+        }
+
+    //Power button function
+        function powerSwitch(){
+            img = document.getElementById("logoPic");
+            if(butPower.value == "on"){
+                butPower.value = "off";
+                img.src="https://aidancarr1.github.io/SD330/fridge%20logo%20off.png";
+                document.getElementById("homeScreen").style.display = "none";
+                for(var i=1;i<7;i++){
+                    screen = "app" + i + "Screen";
+                    document.getElementById(screen).style.display = "none";
+                }
+            }
+            else{
+                butPower.value = "on";
+                img.src="https://aidancarr1.github.io/SD330/fridge%20logo.png";
+                document.getElementById("homeScreen").style.display = "block";
+            }   
+        }
+
+    //Temperature functions
+        function tempFtoC(tempF){
+            return Math.floor(((tempF - 32) * (5/9)));
+        }
+
+        function tempCtoF(tempC){
+            return Math.floor(((tempC * 9/5) + 32));
+        }
+
+        function tempUp(){
+            if(unit == "F"){
+                if(tempF < 40){
+                    tempF++;
+                    tempC = tempFtoC(tempF);
+                    document.getElementById("temp").textContent = ""+tempF + "\xB0F";
+                }
+            }
+            else{
+                if(tempC < 4){
+                    tempC++;
+                    tempF = tempCtoF(tempC);
+                    document.getElementById("temp").textContent = tempC + "\xB0C";
+                }
+            }
+        }
+
+        function tempDown(){
+            if(unit == "F"){
+                if(tempF > 32){
+                    tempF--;
+                    tempC = tempFtoC(tempF);
+                    document.getElementById("temp").textContent = tempF + "\xB0F";
+                }
+            }
+            else{
+                if(tempC > 0){
+                    tempC--;
+                    tempF = tempCtoF(tempC);
+                    document.getElementById("temp").textContent = tempC + "\xB0C";
+                }
+            }
+        }
+
+        function changeUnit(){
+            if(unit == "F"){
+                unit = "C";
+                document.getElementById("temp").textContent = tempC + "\xB0C";
+            }
+            else{
+                unit = "F";
+                document.getElementById("temp").textContent = tempF + "\xB0F";
+            }
+        }
+
+    //Shopping list functions
+        function setList(){
+            for(i=0; i<list.length;i++){
+                textList += "<tr><td>" + list[i] +"</td></tr> ";
+            }
+            document.getElementById("shoppingTable").innerHTML = textList
+        }
+        function addItem(){
+            var thing = document.getElementById("item").value;
+            textList += "<tr><td>" + thing +"</td></tr> ";
+            document.getElementById("shoppingTable").innerHTML = textList;
+            document.getElementById("item").value = "";
+        }
+
+    //Generic App functions
+        function openApp(num){
+            document.getElementById("homeScreen").style.display = "none";
+            document.getElementById("app"+num+"Screen").style.display = "block";
+            if(num == 4){
+                audio = new Audio("https://www.myinstants.com/media/sounds/cartoon-hammer.mp3");
+                audio.play();
+            }
+        }
+
+        function goHome(num){
+            document.getElementById("app"+num+"Screen").style.display = "none";
+            document.getElementById("homeScreen").style.display = "block";
+        }
+
+    //Timer functions
+        function subMinute(){
+            if(timerMin > 0){
+                timerMin--;
+                updateTimer();
+            }
+        }
+
+        function addMinute(){
+            timerMin++;
+            updateTimer();
+        }
+
+        function updateTimer(){
+            var timerString = timerMin+":";
+            if(timerSec < 10){
+                timerString += "0" + timerSec;
+            }
+            else{
+                timerString += timerSec;
+            }
+            document.getElementById("timerText").innerHTML = timerString;
+        }
+
+        function startTimer(){
+            if(timerMin > 0 || timerSec > 0){
+                currentTimer = setInterval(doTimerTick,1000);
+                document.getElementById("timerCheck").style.display = "none";
+                document.getElementById("timerPause").style.display = "block";
+            }
+        }
+
+        function pauseTimer(){
+            clearInterval(currentTimer);
+            document.getElementById("timerPause").style.display = "none";
+            document.getElementById("timerCheck").style.display = "block";
+        }   
+
+        function cancelTimer(){
+            clearInterval(currentTimer);
+            timerSec = 0;
+            timerMin = 0;
+            updateTimer();
+            document.getElementById("timerPause").style.display = "none";
+            document.getElementById("timerCheck").style.display = "block";
+        }
+
+        function doTimerTick(){
+            if(timerSec > 0){
+                timerSec--;
+            }
+            else if(timerSec == 0 && timerMin > 0){
+                timerSec = 59;
+                timerMin--;
+            }
+            else{
+                timerMin = 0;
+
+                cancelTimer(currentTimer);
+                audio = new Audio("https://assets.mixkit.co/active_storage/sfx/941/941-preview.mp3");
+                audio.play();
+                
+                document.getElementById("timerPause").style.display = "none";
+                document.getElementById("timerCheck").style.display = "block";
+            }
+            updateTimer();
+        }
+
+    
+    </script>
+</html>

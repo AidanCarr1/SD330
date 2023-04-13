@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Carr Files</title>
+        <title>Aidan Carr 330 Files</title>
         <meta charset="UTF-8">
 
         <style>
@@ -12,13 +12,36 @@
 
             #main{
                 border-radius: 20px;
-                background-color: wheat;
+                background-image: url("https://i.redd.it/o6jblcy8m6w51.jpg");
+                background-color: rgb(51, 2, 51);
+                background-size: 2000px;
                 padding: 10px;
+            }
+
+            #intro{
+                float:left;
+                width:60%;
+                background-color: white;
+                border-radius: 20px;
+                padding: 20px;
+                height: 200px;
+
+            }
+
+            #profile{
+                float: right;
+                width: 30%;
+                background-color: white;
+                border-radius: 20px;
+                padding: 20px;
+                height: 200px;
+
             }
 
             .section{
                 border-radius: 20px;
-                background-color: rosybrown;
+                background-image: url("https://www.textures4photoshop.com/tex/thumbs/seamless-notebook-paper-texture-free-thumb36.jpg");
+                background-color: aliceblue;
                 padding: 10px;
                 margin:15px;
                 overflow: auto;
@@ -41,13 +64,33 @@
 
     <body onload="fileList();">
         <div id="main">
-            <h1>Aidan's GitHub Files</h1>
+            <div id="intro">
+                <h1>Aidan's GitHub Files</h1>
+                <p>Welcome to my System Design (CMPT330) file repository. 
+                <p>Please click on any link or picture to view the file. </p>
+            </div>
+            
+            <div id="profile">
+                <div style="float:left;" >
+                    <p><strong>Aidan Carr</strong></p>
+                    <p>Aidan.Carr1@marist.edu</p>
+                    <p>Class of 2025</p>
+                </div>
+                
+                <img height="175px" style="float:right;" src="https://cdn3.volusion.com/adgss.rhexw/v/vspfiles/photos/SM215-3.jpg?v-cache=1528079662">
+            </div>
+            <br style="clear:right; clear:left;">
 
             <p id="files">Files will appear here.</p>
         </div>
         
 
     </body>
+
+    <footer>
+        <hr>
+        <small> <p>&copy; Aidan Carr April 12, 2023</p> </small>
+    </footer>
 
 
     <script>

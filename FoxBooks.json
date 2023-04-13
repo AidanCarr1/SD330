@@ -1,0 +1,42 @@
+{
+    "courses": {
+        "CMPT330":{
+            "title": "System Design",
+            "semester": "Fall 2023",
+            "professor": "Andrew Tokash"
+        },
+        "CMPT307":{
+            "title": "Internetworking",
+            "semester": "Fall 2023",
+            "professor": "Robert Cannistra"
+        },
+        "CMPT221":{
+            "title": "Software Development II",
+            "semester": "Fall 2023",
+            "professor": "Ron Coleman"
+        }
+    },
+
+    "books":{
+        "comments":{
+            "":"Primary ID is ISBN-13"
+        },
+        "9798735625452":{
+            "title": "The System Design Interview, 2nd Edition",
+            "author": "Lewis Lin",
+            "courseID": "CMPT330"
+        },
+        "9781119468387":{
+            "title": "PHP, MySQL, & JavaScript All-in-One For Dummies",
+            "author": "Richard Blum",
+            "courseID": "CMPT221"
+        },
+        "9798846255234":{
+            "title": "CISCO Packet Tracer Lab Manual",
+            "author": "Ariful Islam",
+            "courseID": "CMPT307"
+        }
+
+
+    }
+}

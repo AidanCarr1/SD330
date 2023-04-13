@@ -1,1 +1,103 @@
-<h1>Hello world</h1>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Carr Files</title>
+        <meta charset="UTF-8">
+
+        <style>
+            body{
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                font-size: 20px;
+            }
+
+            #main{
+                border-radius: 20px;
+                background-color: wheat;
+                padding: 10px;
+            }
+
+            .section{
+                border-radius: 20px;
+                background-color: rosybrown;
+                padding: 10px;
+                margin:15px;
+                overflow: auto;
+            }
+
+            .column{
+                float: left;
+                width: 25%;
+                text-align: center;
+            }
+
+            img{
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+        </style>
+    </head>
+
+    <body onload="fileList();">
+        <div id="main">
+            <h1>Aidan's GitHub Files</h1>
+
+            <p id="files">Files will appear here.</p>
+        </div>
+        
+
+    </body>
+
+
+    <script>
+	
+	 function fileList(){ 
+		(async () => {
+			const response = await fetch("https://api.github.com/repos/aidancarr1/SD330/contents/");
+			const data = await response.json();
+    	
+            typeList = ["html", "png", "jpg", "md"]
+            let htmlString = "";
+            
+            //separate each file type
+            for ( var i=0; i<typeList.length; i++){
+
+                //make div
+                htmlString += "<div id='div"+i+"' class='section'>";
+                
+                //title
+                htmlString += "<h2>" + typeList[i].toUpperCase() + "</h2>";
+
+                //for each file
+    		    for (let file of data) {
+                    
+                    fname = file.name;   
+                    if(fname.includes(typeList[i])){
+                        fpath = "https://aidancarr1.github.io/SD330/" + fname;  
+
+                        //Links
+                        //PNG, JPG
+                        if(fname.includes("png") || fname.includes("jpg")){
+                            htmlString += "<div class='column'> <p> <h3> " + fname + " </h3> </p>";
+                            htmlString += "<p> <a href = '"+fpath+"'> <img src='"+fpath+"' style='height:150px;'> <a> <p> </div>";
+                        }
+                        //HTML, MD
+                        else{
+                            htmlString += "<p> <h3> " + fname + " </h3> </p>";
+                            htmlString += "<p> <a href = '"+fpath+"'> Go to "+fname+" <a> <p>";
+                        }
+                        
+                    }
+			    }
+
+                htmlString += "</div> <br style='clear:left;'>";
+    			    
+            }
+            document.getElementById('files').innerHTML = htmlString;
+			
+		})()
+	}	
+    </script>
+
+</html>

@@ -14,6 +14,11 @@
             "title": "Software Development II",
             "semester": "Fall 2023",
             "professor": "Ron Coleman"
+        },
+        "MATH210":{
+            "title": "Linear Algebra",
+            "semester": "Fall 2023",
+            "professor": "Tracy McGrail"
         }
     },
 
@@ -26,17 +31,20 @@
             "author": "Lewis Lin",
             "courseID": "CMPT330"
         },
+        "9798846255234":{
+            "title": "CISCO Packet Tracer Lab Manual",
+            "author": "Ariful Islam",
+            "courseID": "CMPT307"
+        },
         "9781119468387":{
             "title": "PHP, MySQL, & JavaScript All-in-One For Dummies",
             "author": "Richard Blum",
             "courseID": "CMPT221"
         },
-        "9798846255234":{
-            "title": "CISCO Packet Tracer Lab Manual",
-            "author": "Ariful Islam",
-            "courseID": "CMPT307"
+        "9780136880929":{
+            "title": "Linear Algebra and Its Applications, 6th edition",
+            "author": "Judi McDonald",
+            "courseID": "MATH210"
         }
-
-
     }
 }

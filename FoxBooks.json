@@ -1,21 +1,25 @@
 {
     "courses": {
-        "CMPT330":{
+        "0":{
+            "number": "CMPT330",
             "title": "System Design",
             "semester": "Fall 2023",
             "professor": "Andrew Tokash"
         },
-        "CMPT307":{
+        "1":{
+            "number": "CMPT307",
             "title": "Internetworking",
             "semester": "Fall 2023",
             "professor": "Robert Cannistra"
         },
-        "CMPT221":{
+        "2":{
+            "number": "CMPT221",
             "title": "Software Development II",
             "semester": "Fall 2023",
             "professor": "Ron Coleman"
         },
-        "MATH210":{
+        "3":{
+            "number": "MATH210",
             "title": "Linear Algebra",
             "semester": "Fall 2023",
             "professor": "Tracy McGrail"
@@ -23,9 +27,6 @@
     },
 
     "books":{
-        "comments":{
-            "":"Primary ID is ISBN-13"
-        },
         "9798735625452":{
             "title": "The System Design Interview, 2nd Edition",
             "author": "Lewis Lin",

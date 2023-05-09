@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>FoxBooks Home</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="FBstyle.css">
+    </head>
+
+    <body onload="fileList();">
+        <div id="topBar">
+            <button id="fbLogo" type="submit"><img src="https://aidancarr1.github.io/SD330/FBlogo2.png" alt="FoxBooks" width="400px" onclick="goHome();"></button>
+            <input type="text" id="searchBox" placeholder="Title, Author, ISBN, Class">
+            <button id="searchBut" type="submit"><img src="https://www.iconpacks.net/icons/2/free-icon-search-3076.png" height="70%" alt="Search"></button>
+            <button id="profileBut" type="submit"><img src="https://qai.org.au/wp-content/uploads/2021/03/grey-person-icon-300x298.png" height="70px" alt="Profile"></button>
+            <button id="cartBut" type="submit"><img src="https://cdn-icons-png.flaticon.com/512/3916/3916598.png" height="50px" alt="Cart"></button>
+        </div>
+        <br style="clear:left; clear:right;">
+
+        <div id="navigation">
+            <a class="navHeader" href="FoxBooksCourses.html">Courses</a>
+            <a class="navHeader" href="">Books</a>
+            <a class="navHeader" href="">My Library</a>
+            <div class="vl"></div>
+            <a class="navHeader" href="">Help</a>
+        </div>
+        <br style="clear:left;">
+
+        <div id="meat" style="text-align: center;">
+            <div id="message">
+                <p><strong>Welcome!</strong></p>
+                <p>Have a Marist account?</p>
+                <button id="signInBut">Sign in</button>
+            </div>
+        </div>
+        <br>
+        
+        
+        
+
+    </body>
+
+    <footer>
+        <hr>
+        <small> <p>&copy; Aidan Carr May 9, 2023</p> </small>
+    </footer>
+
+
+    <script>
+        function goHome(){
+            open("FoxBooksHome.html","_self");
+        }
+	
+    </script>
+
+</html>

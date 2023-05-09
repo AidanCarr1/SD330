@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>FoxBooks Courses</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="FBstyle.css">
+    </head>
+
+    <body onload="fileList();">
+        <div id="topBar">
+            <button id="fbLogo" type="submit"><img src="https://aidancarr1.github.io/SD330/FBlogo2.png" alt="FoxBooks" width="400px" onclick="goHome();"></button>
+            <input type="text" id="searchBox" placeholder="Title, Author, ISBN, Class">
+            <button id="searchBut" type="submit"><img src="https://www.iconpacks.net/icons/2/free-icon-search-3076.png" height="70%" alt="Search"></button>
+            <button id="profileBut" type="submit"><img src="https://qai.org.au/wp-content/uploads/2021/03/grey-person-icon-300x298.png" height="70px" alt="Profile"></button>
+            <button id="cartBut" type="submit"><img src="https://cdn-icons-png.flaticon.com/512/3916/3916598.png" height="50px" alt="Cart"></button>
+        </div>
+        <br style="clear:left; clear:right;">
+
+        <div id="navigation">
+            <a class="navHeader" href="">Courses</a>
+            <a class="navHeader" href="">Books</a>
+            <a class="navHeader" href="">My Library</a>
+            <div class="vl"></div>
+            <a class="navHeader" href="">Help</a>
+        </div>
+        <br style="clear:left;">
+
+        <nav class="crumbs" id="bread">
+            <ol>
+                <li class="crumb"><a href="FoxBooksHome.html">Home</a></li>
+                <li class="crumb">Courses</li>
+            </ol>
+        </nav>
+
+        <h1 style="margin-left: 20px; font-size: 40px; margin-bottom: 0px;" id="siteID">Courses</h1>
+        <p style="margin-left: 20px; font-size: 25px; margin-top: 0px;">Select your course</p>
+        <div id="catalogue">
+            <p>List of courses should appear here...</p>
+        </div>
+        <br>
+    
+    </body>
+
+    <footer>
+        <hr>
+        <small> <p>&copy; Aidan Carr May 9, 2023</p> </small>
+    </footer>
+
+
+    <script>
+                
+        function fileList(){
+            htmlString = "";
+
+            (async () => {
+                const response = await fetch("https://aidancarr1.github.io/SD330/FoxBooks.json");
+                const data = await response.json();
+                let courses = Object.keys(data['courses']);
+                for(const i in courses){
+                    thisCourse = courses[i];
+                    thisTitle = data["courses"][thisCourse].title;
+                    thisNumber = data["courses"][thisCourse].number;
+                    thisSemester = data["courses"][thisCourse].semester;
+                    thisProfessor = data["courses"][thisCourse].professor;
+                    //create div
+                    htmlString += "<div class='courseBox' onclick='openPage("+'"'+thisNumber+'"'+")'> <h2>" + thisTitle + "</h2>";
+                    //list extra details    
+                    htmlString += "<ul class='descRow'><li class='descList'>" + thisNumber + "</li>";
+                    htmlString += "<li class='descList'>" + thisProfessor + "</li>";
+                    htmlString += "<li class='descList'>" + thisSemester + "</li></ul></div>";
+
+                }
+                document.getElementById('catalogue').innerHTML = htmlString;
+            })()
+            
+        }
+        
+        function openPage(param) {
+            var url = 'FoxBooksCoursePage.html?course=' + encodeURIComponent(param);
+            window.open(url, '_self');
+        }
+        
+        
+        
+        function goHome(){
+            open("FoxBooksHome.html","_self");
+        }
+    </script>
+
+</html>

@@ -27,22 +27,26 @@
     },
 
     "books":{
-        "9798735625452":{
+        "0":{
+            "isbn": "9798735625452",
             "title": "The System Design Interview, 2nd Edition",
             "author": "Lewis Lin",
             "courseID": "CMPT330"
         },
-        "9798846255234":{
+        "1":{
+            "isbn": "9798846255234",
             "title": "CISCO Packet Tracer Lab Manual",
             "author": "Ariful Islam",
             "courseID": "CMPT307"
         },
-        "9781119468387":{
+        "2":{
+            "isbn": "9781119468387",
             "title": "PHP, MySQL, & JavaScript All-in-One For Dummies",
             "author": "Richard Blum",
             "courseID": "CMPT221"
         },
-        "9780136880929":{
+        "3":{
+            "isbn": "9780136880929",
             "title": "Linear Algebra and Its Applications, 6th edition",
             "author": "Judi McDonald",
             "courseID": "MATH210"
